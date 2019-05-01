@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+// Colores
+$azul: #00BFD6;
+$azulclaro: #A3ECF3;
+$naranja: #FF9300;
+$blanco: #FFFFFF;
+$gris: rgb(232, 232, 232);
+$grisclaro: rgb(242, 242, 242);
+
+body {
+	background: $grisclaro;
+	font-family: 'roboto', sans-serif;
+	font-weight: normal;
+}
