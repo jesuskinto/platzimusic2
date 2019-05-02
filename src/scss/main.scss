@@ -1,15 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import "~bulma/bulma.sass";
+@import url("https://fonts.googleapis.com/css?family=Lato:700");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 // Colores
-$azul: #00BFD6;
-$azulclaro: #A3ECF3;
-$naranja: #FF9300;
-$blanco: #FFFFFF;
-$gris: rgb(232, 232, 232);
+$gris: #eaeaea;
 $grisclaro: rgb(242, 242, 242);
+$rosa: #FF535B;
+$rosaclaro: #FD746C;
+$rosatraslucido: #FD746CBF;
+$blanco: white;
 
 body {
 	background: $grisclaro;
-	font-family: 'roboto', sans-serif;
-	font-weight: normal;
+	font-family: 'lato', sans-serif;
+	font-weight: bold;
 }

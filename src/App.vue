@@ -1,31 +1,63 @@
 <template lang="pug">
   #app
-    .wrapper
-      img(src="./assets/platzi.png")
-      h1 Registro estación Platzi
-      form(@submit.prevent="submit")
-        label(for='nombre') Nombre
-        input#nombre(v-model="nombre")
-        label(for='apellido') Apellido
-        input#apellido(v-model="apellido")
-        label(for='cargo') Cargo
-        input#cargo(v-model="cargo")
-        button(type="submit") ENVIAR
+    m-header
+    .columns.is-mobile.is-gapless
+      navbar.column.is-narrow
+      section.column
+        .wrapper
+          h2 Ahora en cine
+          pelicula(
+            :pelicula="pelicula",
+            :key="pelicula.id",
+            v-for="pelicula in peliculas")
+        .wrapper
+          h2 Aclamadas por la critica
+          pelicula(
+            :pelicula="pelicula",
+            :key="pelicula.id",
+            v-for="pelicula in peliculas")
+        .wrapper
+          h2 No te debes perder
+          pelicula(
+            :pelicula="pelicula",
+            :key="pelicula.id",
+            v-for="pelicula in peliculas")
 </template>
 
 <script>
+import MHeader from './components/header'
+import Navbar from './components/navbar'
+import Pelicula from './components/pelicula'
+
 export default {
   name: 'app',
+  components: {
+    MHeader,
+    Navbar,
+    Pelicula
+  },
   data () {
     return {
-      nombre: 'Platzerito',
-      apellido: 'Cool de la Web',
-      cargo: 'FullStack JS'
-    }
-  },
-  methods: {
-    submit () {
-      alert('enviando...!')
+      peliculas: [
+        {
+          id: 1,
+          titulo: 'The Secret Life of Pets',
+          contenido: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+        },
+        {
+          id: 2,
+          titulo: 'The Secret Life of Pets',
+          contenido: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+        },
+        {
+          id: 3,
+          titulo: 'The Secret Life of Pets',
+          contenido: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+        }
+      ]
     }
   }
 }
@@ -34,49 +66,15 @@ export default {
 <style lang="scss">
 @import './scss/main.scss';
 #app {
-  width: 320px;
-  height: 409px;
-  background: $blanco;
-  margin: 100px auto;
-  border-radius: 2px;
-  border: solid 3px $gris;
-  .wrapper{
-    padding: 20px 28px;
+  margin: 0 auto;
+  width: 1024px;
+  background: white;
 
-    h1 {
-      color: $azul;
-      font-size: 25px;
-      font-weight: bold;
-    }
+  .wrapper {
+    padding: 28px 0 0 28px;
 
-    label, input {
-      display: block;
-      width: 100%;
-    }
-
-    label {
-      color: $naranja;
-      font-size: 10px;
-    }
-
-    input {
-      border: none;
-      font-size: 16px;
-      border-bottom: 1px solid $naranja;
+    h2 {
       margin-bottom: 15px;
-      padding: 5px 0px;
-    }
-
-    button {
-      background: $azul;
-      color: $blanco;
-      font-size: 12px;
-      padding: 8.5px 38px;
-      border-radius: 3px;
-      border: none;
-      float: right;
-      font-weight: bold;
-      box-shadow: 2px 2px 8px $gris;
     }
   }
 }
