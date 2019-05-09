@@ -1,82 +1,62 @@
 <template lang="pug">
   #app
-    m-header
-    .columns.is-mobile.is-gapless
-      navbar.column.is-narrow
-      section.column
-        .wrapper
-          h2 Ahora en cine
-          pelicula(
-            :pelicula="pelicula",
-            :key="pelicula.id",
-            v-for="pelicula in peliculas")
-        .wrapper
-          h2 Aclamadas por la critica
-          pelicula(
-            :pelicula="pelicula",
-            :key="pelicula.id",
-            v-for="pelicula in peliculas")
-        .wrapper
-          h2 No te debes perder
-          pelicula(
-            :pelicula="pelicula",
-            :key="pelicula.id",
-            v-for="pelicula in peliculas")
+    section.section
+      nav.navbar
+        .field.has-addons
+          .control.is-expanded
+            input.input(
+              type="text"
+              placeholder="Buscar canciones"
+              v-model="nombre")
+          .control
+            button.button.is-info(@click="buscar") Buscar
+          .control
+            button.button.is-danger &times;
+          .control
+            button.button
+              span.is-size-7 Encontrado: {{ cantidad }}
+
+      .container.custom
+        .columns
+          .colum(v-for="c in canciones") {{ c.nombre }},{{ c.artista }}
 </template>
 
 <script>
-import MHeader from './components/header'
-import Navbar from './components/navbar'
-import Pelicula from './components/pelicula'
+
+const canciones = [
+  { 'nombre': 'De mes en mes', 'artista': 'Ricardo Arjona' },
+  { 'nombre': 'Pinguinos en la cama', 'artista': 'Ricardo Arjona' },
+  { 'nombre': 'Atrevete', 'artista': 'Calle 13' },
+  { 'nombre': 'Nadie como tu', 'artista': 'Calle 13' }
+]
 
 export default {
   name: 'app',
-  components: {
-    MHeader,
-    Navbar,
-    Pelicula
-  },
   data () {
     return {
-      peliculas: [
-        {
-          id: 1,
-          titulo: 'The Secret Life of Pets',
-          contenido: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-        },
-        {
-          id: 2,
-          titulo: 'The Secret Life of Pets',
-          contenido: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-        },
-        {
-          id: 3,
-          titulo: 'The Secret Life of Pets',
-          contenido: `Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-        }
-      ]
+      canciones: [],
+      nombre: ''
+    }
+  },
+  methods: {
+    buscar () {
+      this.canciones = canciones
+    }
+  },
+  computed: {
+    cantidad () {
+      return this.canciones.length
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import './scss/main.scss';
+@import 'scss/main.scss';
+
 #app {
-  margin: 0 auto;
-  width: 1024px;
-  background: white;
-
-  .wrapper {
-    padding: 28px 0 0 28px;
-
-    h2 {
-      margin-bottom: 15px;
-    }
+  .custom {
+    margin-top: 30px;
   }
 }
-
 </style>

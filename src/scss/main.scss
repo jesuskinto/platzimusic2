@@ -1,17 +1,1 @@
-@import "~bulma/bulma.sass";
-@import url("https://fonts.googleapis.com/css?family=Lato:700");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
-// Colores
-$gris: #eaeaea;
-$grisclaro: rgb(242, 242, 242);
-$rosa: #FF535B;
-$rosaclaro: #FD746C;
-$rosatraslucido: #FD746CBF;
-$blanco: white;
-
-body {
-	background: $grisclaro;
-	font-family: 'lato', sans-serif;
-	font-weight: bold;
-}
+@import '~bulma/bulma.sass'
