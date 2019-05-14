@@ -1,5 +1,6 @@
 <template lang="pug">
   #app
+    pm-header
     section.section
       nav.navbar
         .field.has-addons
@@ -7,40 +8,45 @@
             input.input(
               type="text"
               placeholder="Buscar canciones"
-              v-model="nombre")
+              v-model="searchQuery")
           .control
             button.button.is-info(@click="buscar") Buscar
           .control
             button.button.is-danger &times;
-          .control
-            button.button
-              span.is-size-7 Encontrado: {{ cantidad }}
-
-      .container.custom
+      p
+        small Encontrados: {{ cantidad }}
+      .container.results
         .columns
-          .colum(v-for="c in canciones") {{ c.nombre }},{{ c.artista }}
+          .column(v-for="c in canciones")
+            | {{ c.name }} - {{ c.artists[0].name }}
+    pm-footer
 </template>
 
 <script>
-
-const canciones = [
-  { 'nombre': 'De mes en mes', 'artista': 'Ricardo Arjona' },
-  { 'nombre': 'Pinguinos en la cama', 'artista': 'Ricardo Arjona' },
-  { 'nombre': 'Atrevete', 'artista': 'Calle 13' },
-  { 'nombre': 'Nadie como tu', 'artista': 'Calle 13' }
-]
+import trackService from './services/traks'
+import PmHeader from './components/layout/Header.vue'
+import PmFooter from './components/layout/Footer.vue'
 
 export default {
   name: 'app',
+  components: {
+    PmHeader,
+    PmFooter
+  },
   data () {
     return {
       canciones: [],
-      nombre: ''
+      searchQuery: ''
     }
   },
   methods: {
     buscar () {
-      this.canciones = canciones
+      if (!this.searchQuery) { return }
+
+      trackService.search(this.searchQuery)
+        .then(res => {
+          this.canciones = res.tracks.items
+        })
     }
   },
   computed: {
@@ -55,7 +61,7 @@ export default {
 @import 'scss/main.scss';
 
 #app {
-  .custom {
+  .results {
     margin-top: 30px;
   }
 }
