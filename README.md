@@ -1,10 +1,11 @@
 # platzi-music-2
 
-> App curso profesional de Vue.js Platzi
+> App curso  Is a search engine and song player built in the
+Vuejs de Platzi professional course
 
-platzi-music-2 Is a search engine and song player built in the
-Vuejs de Platzi professional course with open-source technology:
+[Demo in now](https://platzi-music-onxpnhdmv.now.sh)
 
+Open-source technology:
 1. Vue
 2. VueRouter
 3. VueStore
@@ -15,6 +16,7 @@ Vuejs de Platzi professional course with open-source technology:
 8. WebPack
 9. eslint
 10. ♥
+
 
 ![Screenshot](screenshot.png)
 
