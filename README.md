@@ -3,7 +3,7 @@
 > App curso  Is a search engine and song player built in the
 Vuejs de Platzi professional course
 
-[Demo in now](https://platzi-music-onxpnhdmv.now.sh)
+[Demo in now](https://platzi-music.jesuskinto.now.sh/)
 
 Open-source technology:
 1. Vue
